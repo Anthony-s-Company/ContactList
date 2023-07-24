@@ -1,13 +1,21 @@
 import { useState } from 'react'
 import ContactList from './components/ContactList'
+import SelectedContact from './components/SelectedContact';
 import './App.css'
 
 function App() {
-
+  const [selectedContactId , setSelectedContactId ] = useState(null);
   return (
-    <>
-      <ContactList />
-    </>
+    <div>
+      {selectedContactId ? (
+        <SelectedContact
+          selectedContactId={selectedContactId}
+          setSelectedContactId={setSelectedContactId}
+        />
+      ) : (
+        <ContactList setSelectedContactId={setSelectedContactId} />
+      )}
+    </div>
   )
 }
 
